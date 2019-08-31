@@ -30,10 +30,10 @@ $text-shadow_size: 4px;
 
 $gutter: 20px;
 
-$input_height: $gutter * 2;
+$input_height: $gutter * 2.25;
 
 $header_height: 69px;
-$header_height_mobile: 28px;
+$header_height_mobile: 100px;
 $footer_height: 36px;
 $footer_height_mobile: 19px;
 
@@ -75,7 +75,7 @@ $color_dark: #2f4050;
 
 // Text
 
-$color_text: #6c7a89;
+$color_text: lighten(#6c7a89, ($fade-percent * 2));
 
 // Links
 
@@ -89,7 +89,7 @@ $color_text-shadow: $color_shadow;
 
 // Functional
 
-$color_disabled: darken($color_light, ($fade-percent * 4));
+$color_disabled: darken($color_text, ($fade-percent * 3));
 $color_placeholder: $color_disabled;
 
 $color_background: $color_light;
@@ -155,10 +155,10 @@ $container_lg:                 ($content-container_lg + $gutter);
 
 // Roundings
 
-$border-radius_base: 2px;
+$border-radius_small: 2px;
 $border-radius_large: 4px;
 
 // Buttons
 
-$btn_padding_horizontal_base: 6px;
+$btn_padding_horizontal_base: 10px;
 $btn_padding_vertical_base: $gutter * 1.5;

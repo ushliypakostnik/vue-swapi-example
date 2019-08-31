@@ -78,21 +78,24 @@ a {
 button {
   cursor: pointer;
   border: none;
+  text-transform: uppercase;
   border-radius: $border-radius_large;
   padding: $btn_padding_horizontal_base $btn_padding_vertical_base;
-  @include btn-color($color_white, $color_primary);
-  @include text($font-family_sans, $font-size_normal, $font-weight_sans_regular);
+  @include btn-color($color_dark, $color_primary);
+  @include text($font-family_sans, $font-size_small, $font-weight_sans_bold);
 }
 
 
 // Controls
 
 input {
+  color: $color_text;
+  background: darken($color_dark, ($fade-percent * 2.5));
   height: $input_height;
-  border: 1px solid $color_border;
-  border-radius: $border-radius_base;
+  border: 2px solid $color_primary;
+  border-radius: $border-radius_small;
   padding: 0 ($gutter / 2);
-  @include text($font-family_sans, $font-size_normal, $font-weight_sans_regular);
+  @include text($font-family_sans, $font-size_medium, $font-weight_sans_regular);
 }
 
 textarea {
@@ -105,7 +108,7 @@ textarea {
 ul {
   list-style-type: none;
   padding-left: 0;
-  margin-bottom: 0;
+  margin: 0;
 
   // For classic style
   &.list-style {

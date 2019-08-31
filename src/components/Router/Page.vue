@@ -3,7 +3,9 @@
     <div class="back"></div>
     <Header />
     <main role="main">
-      <router-view/>
+      <div class="container">
+        <router-view/>
+      </div>
     </main>
     <Footer />
   </div>
@@ -18,7 +20,7 @@ export default {
 
   components: {
     Header,
-    Footer
+    Footer,
   },
 };
 </script>

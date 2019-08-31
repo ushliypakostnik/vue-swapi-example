@@ -1,8 +1,7 @@
 <template>
   <div class="starships">
     <Loading v-if="loading" />
-    <div v-if="success">
-      <h2>Starships list</h2>
+    <div v-if="success" class="container-fluid">
       <ul class="starships__list">
         <li v-for="starship in starships">
           <Spaceship v-bind:spaceship="starship" />
@@ -42,10 +41,5 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-  @import "@/styles/_stylebase.scss";
-
-  h2 {
-    color: $color_primary;
-  }
+<style scoped>
 </style>

@@ -16,18 +16,21 @@ $normal-letter-spacing: normal;
 
 $font-size_base: 16px;
 $font-size_coefficient_large: 3;
-$font-size_coefficient_normal: 1.2;
-$font-size_coefficient_small: 1.1;
+$font-size_coefficient_normal: 2.25;
+$font-size_coefficient_medium: 1.6;
+$font-size_coefficient_small: 1;
 $font-size_coefficient_xsmall: 0.8;
 
 $font-size_large: round($font-size_base * $font-size_coefficient_large);
 $font-size_normal: round($font-size_base * $font-size_coefficient_normal);
+$font-size_medium: round($font-size_base * $font-size_coefficient_medium);
 $font-size_small: round($font-size_base * $font-size_coefficient_small);
 $font-size_xsmall: round($font-size_base * $font-size_coefficient_xsmall);
 
 $line-height_computed: round($font-size_base * $line-height_base);
 $line-height_large: ceil($line-height_computed * $font-size_coefficient_large);
 $line-height_normal: ceil($line-height_computed * $font-size_coefficient_normal);
+$line-height_medium: ceil($line-height_computed * $font-size_coefficient_medium);
 $line-height_small: ceil($line-height_computed * $font-size_coefficient_small);
 $line-height_xsmall: ceil($line-height_computed * $font-size_coefficient_xsmall);
 
@@ -54,6 +57,8 @@ $font-weight_mono_regular: 400;
     line-height: $line-height_large;
   } @else if $font-size == $font-size_normal {
     line-height: $line-height_normal;
+  } @else if $font-size == $font-size_medium {
+    line-height: $line-height_medium;
   } @else if $font-size == $font-size_small {
     line-height: $line-height_small;
   } @else if $font-size == $font-size_xsmall {
@@ -81,6 +86,7 @@ h1 {
 
   @include xs {
     @include text($font-family_mono, $font-size_normal, $font-weight_sans_regular);
+    line-height: 40px;
   }
 }
 
@@ -89,19 +95,19 @@ h2 {
 }
 
 h3 {
-  @include text($font-family_sans, $font-size_small, $font-weight_sans_regular);
+  @include text($font-family_mono, $font-size_normal, $font-weight_sans_regular);
 }
 
 h4 {
-  @include text($font-family_sans, round($font-size_small * 0.9), $font-weight_sans_bold);
+  @include text($font-family_sans, $font-size_small, $font-weight_sans_regular);
 }
 
 h5 {
-  @include text($font-family_sans, round($font-size_small * 0.75), $font-weight_sans_regular);
+  @include text($font-family_sans, round($font-size_small * 0.9), $font-weight_sans_regular);
 }
 
 h6 {
-  @include text($font-family_sans, round($font-size_xsmall * 0.74), $font-weight_sans_regular);
+  @include text($font-family_sans, round($font-size_xsmall * 0.75), $font-weight_sans_regular);
 }
 
 // stylelint-disable-next-line selector-list-comma-newline-after, no-descending-specificity

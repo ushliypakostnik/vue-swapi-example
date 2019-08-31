@@ -36,7 +36,7 @@ export default {
       font-style: normal;
 
       p {
-        color: $color_white;
+        color: $color_dark;
         margin: ($gutter / 4) 0;
         @include text($font-family_sans, $font-size_small, $font-weight_sans_bold);
 
