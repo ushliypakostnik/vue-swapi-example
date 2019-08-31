@@ -2,7 +2,6 @@
   <div class="starships">
     <Loading v-if="loading" />
     <div v-if="success">
-      {{ starships.length }}, {{ minValue }}, {{ maxValue }}, {{ last }}
       <h2>Starships list</h2>
       <ul class="starships__list">
         <li v-for="starship in _starships">
