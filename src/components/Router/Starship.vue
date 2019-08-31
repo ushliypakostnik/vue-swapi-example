@@ -12,7 +12,7 @@
         </li>
       </ul>
       <router-link
-        class="starship__button"
+        class="bottom-button"
         to="/starships"
         tag="button"
       >Back to list</router-link>
@@ -36,7 +36,6 @@ export default {
 
   beforeCreate() {
     const id = this.$route.params.id;
-    console.log(id);
     this.$store.dispatch('starship/STARSHIP_REQUEST', id );
   },
 
@@ -72,11 +71,6 @@ export default {
     h4 {
       margin: ($gutter / 2) 0;
       @include text($font-family_sans, round($font-size_small * 1.25), $font-weight_sans_regular);
-    }
-
-    &__button {
-      margin-top: $gutter * 2;
-      margin-bottom: $gutter * 3;
     }
   }
 </style>

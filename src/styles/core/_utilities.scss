@@ -30,6 +30,22 @@ span.label {
   color: $color_primary;
 }
 
+// Nav or pagination buttons
+.bottom-button {
+  margin-top: $gutter * 2;
+  margin-bottom: $gutter * 3;
+
+  & + .bottom-button {
+    float: right;
+  }
+
+  &--disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.5;
+  }
+}
+
 // Amimation class example
 .pulse {
   $fadetransition-duration: $transition-duration * 2;

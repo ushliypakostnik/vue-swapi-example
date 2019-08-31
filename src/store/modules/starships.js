@@ -28,12 +28,10 @@ const actions = {
       api.getStarships()
         .then((response) => {
           commit(STARSHIPS_SUCCESS, response);
-          console.log('responce', response);
           resolve(response);
         })
         .catch((error) => {
           commit(STARSHIPS_ERROR);
-          console.log('error', error);
           reject(error);
         });
     });

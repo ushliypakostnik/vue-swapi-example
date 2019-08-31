@@ -16,4 +16,8 @@ export default {
 };
 </script>
 
-<style src="./styles/_stylebase.scss" lang="scss"></style>
+<style src="./styles/_stylebase.scss" lang="scss">
+  #app {
+    min-height: 100%;
+  }
+</style>

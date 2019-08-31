@@ -3,43 +3,7 @@
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
-#root,
 #app {
   min-height: 100%;
 }
 
-.form {
-  &__group {
-    position: relative;
-    text-align: center;
-
-    input,
-    button {
-      margin-bottom: round($input_height / 1.5);
-    }
-  }
-
-  &--vertical {
-    input,
-    button {
-      width: 100%;
-    }
-  }
-
-  &__message {
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 100%;
-    top: $input_height * 1.1;
-    @include text($font-family_sans, $font-size_xsmall, $font-weight_sans_regular);
-
-    &--error {
-      color: $color_error;
-    }
-
-    &--success {
-      color: $color_success;
-    }
-  }
-}

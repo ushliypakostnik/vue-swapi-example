@@ -1,6 +1,6 @@
 <!-- eslint-disable max-len -->
 <template>
-  <div class="loader loader--style2">
+  <div class="loader">
     <svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -46,9 +46,9 @@ export default {
     margin: 0 auto 1em;
     display: inline-block;
     vertical-align: top;
-  }
 
-  svg path {
-    fill: $color_primary;
+    svg path {
+      fill: $color_primary;
+    }
   }
 </style>

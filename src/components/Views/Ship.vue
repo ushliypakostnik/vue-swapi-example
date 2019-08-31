@@ -58,12 +58,6 @@ export default {
   @import "@/styles/_stylebase.scss";
 
   .ship {
-    margin-bottom: $gutter * 2;
-
-    &__label {
-      color: $color_primary;
-    }
-
     h3 {
       margin-bottom: $gutter / 2;
       line-height: round($line-height_small * 1.25);
