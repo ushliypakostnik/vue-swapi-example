@@ -1,0 +1,121 @@
+// Typography
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
+@import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
+
+// Typographic Variables
+//////////////////////////////////////////////////////
+
+// Good line-height and letter-spacing
+$line-height_base: 1.428571429;
+$normal-letter-spacing: normal;
+
+// Guide
+
+$font-size_base: 16px;
+$font-size_coefficient_large: 3;
+$font-size_coefficient_normal: 1.2;
+$font-size_coefficient_small: 1.1;
+$font-size_coefficient_xsmall: 0.8;
+
+$font-size_large: round($font-size_base * $font-size_coefficient_large);
+$font-size_normal: round($font-size_base * $font-size_coefficient_normal);
+$font-size_small: round($font-size_base * $font-size_coefficient_small);
+$font-size_xsmall: round($font-size_base * $font-size_coefficient_xsmall);
+
+$line-height_computed: round($font-size_base * $line-height_base);
+$line-height_large: ceil($line-height_computed * $font-size_coefficient_large);
+$line-height_normal: ceil($line-height_computed * $font-size_coefficient_normal);
+$line-height_small: ceil($line-height_computed * $font-size_coefficient_small);
+$line-height_xsmall: ceil($line-height_computed * $font-size_coefficient_xsmall);
+
+$font-family_sans: sans-serif;
+$font-weight_sans_regular: 400;
+$font-weight_sans_bold: 700;
+
+$font-family_mono: 'VT323', monospace;
+$font-weight_mono_regular: 400;
+
+
+// Universal Typographic Mixin
+//////////////////////////////////////////////////////
+
+// We use one, only one, Karl, a universal mixin for all cases !!!!!!!!!!
+
+@mixin text($font-family, $font-size, $font-weight) {
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  letter-spacing: $normal-letter-spacing;
+
+  @if $font-size == $font-size_large {
+    line-height: $line-height_large;
+  } @else if $font-size == $font-size_normal {
+    line-height: $line-height_normal;
+  } @else if $font-size == $font-size_small {
+    line-height: $line-height_small;
+  } @else if $font-size == $font-size_xsmall {
+    line-height: $line-height_xsmall;
+  } @else {
+    line-height: floor($font-size * $line-height_base);
+  }
+}
+
+
+// Typographic Base
+//////////////////////////////////////////////////////
+
+// Regular paragraph
+p {
+  color: $color_text;
+  margin-bottom: $gutter;
+  @include text($font-family_sans, $font-size_xsmall, $font-weight_sans_regular);
+}
+
+// Default headers
+
+h1 {
+  @include text($font-family_mono, $font-size_large, $font-weight_sans_regular);
+
+  @include xs {
+    @include text($font-family_mono, $font-size_normal, $font-weight_sans_regular);
+  }
+}
+
+h2 {
+  @include text($font-family_mono, $font-size_normal, $font-weight_sans_regular);
+}
+
+h3 {
+  @include text($font-family_sans, $font-size_small, $font-weight_sans_regular);
+}
+
+h4 {
+  @include text($font-family_sans, round($font-size_small * 0.9), $font-weight_sans_bold);
+}
+
+h5 {
+  @include text($font-family_sans, round($font-size_small * 0.75), $font-weight_sans_regular);
+}
+
+h6 {
+  @include text($font-family_sans, round($font-size_xsmall * 0.74), $font-weight_sans_regular);
+}
+
+// stylelint-disable-next-line selector-list-comma-newline-after, no-descending-specificity
+h1, h2, h3 {
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+// stylelint-disable-next-line selector-list-comma-newline-after, no-descending-specificity
+h1, h2, h3, h4, h5, h6 {
+  color: $color_text;
+}
+
+strong {
+  font-weight: $font-weight_sans_bold;
+}

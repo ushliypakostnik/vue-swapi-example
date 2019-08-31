@@ -1,0 +1,164 @@
+// Project variables
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
+$image-path: "../../assets/";
+
+// Effects
+//////////////////////////////////////////////////////
+
+$fade: 0.2;
+$fade-percent: 8%;
+
+$transition_duration: 0.2s;
+$transition_timing-function: ease-out;
+$transition_delay: 0s;
+
+$shadow_coords-x: 0;
+$shadow_coords-y: 1px;
+$shadow_size: 4px;
+$shadow_stretch: 0;
+
+$text-shadow_coords-x: 0;
+$text-shadow_coords-y: 1px;
+$text-shadow_size: 4px;
+
+
+// Sizes
+//////////////////////////////////////////////////////
+
+$gutter: 20px;
+
+$input_height: $gutter * 2;
+
+$header_height: 69px;
+$header_height_mobile: 28px;
+$footer_height: 36px;
+$footer_height_mobile: 19px;
+
+
+// Colors
+//////////////////////////////////////////////////////
+
+// Palette
+//////////////////////////////////////////////////////
+
+$color_white: #fff;
+$color_black: #000;
+
+$color_cian: #22b394;
+$color_blue: #2d84c6;
+$color_mint: #44c6a8;
+$color_green: #21b499;
+$color_yellow: #ffe300;
+$color_orange: #f0ac61;
+$color_red: #ef5a99;
+
+//Grays
+
+$color_gray:  #cfdae0;
+
+// Main
+
+$color_primary: $color_yellow;
+$color_second: $color_blue;
+$color_warning: $color_orange;
+$color_error: $color_red;
+$color_success: $color_green;
+
+// Special
+
+$color_light: #fafafa;
+
+$color_dark: #2f4050;
+
+// Text
+
+$color_text: #6c7a89;
+
+// Links
+
+$color_link: #557aa7;
+$color_link-hover: #44529c;
+
+// Shadows
+
+$color_shadow: rgba($color_black, 0.15);
+$color_text-shadow: $color_shadow;
+
+// Functional
+
+$color_disabled: darken($color_light, ($fade-percent * 4));
+$color_placeholder: $color_disabled;
+
+$color_background: $color_light;
+
+// Borders
+
+$color_border: $color_gray;
+
+
+// Breackpoints and containers
+//////////////////////////////////////////////////////
+
+$breackpoint_min: 320px;
+
+// Extra small screen / XS / phone
+$breackpoint_xs:                  360px !global;
+$breackpoint_xs_min:              $breackpoint_xs !global;
+
+// Small screen / SM / tablet
+$breackpoint_sm:                  768px !global;
+$breackpoint_sm_min:              $breackpoint_sm !global;
+
+// Medium screen / MD desktop / netbooks?
+$breackpoint_md:                  992px !global;
+$breackpoint_md_min:              $breackpoint_md !global;
+
+// Large screen / LG / laptops?
+$breackpoint_lg:                  1200px !global;
+$breackpoint_lg_min:              $breackpoint_lg !global;
+
+// Large screen / XL desktop / large laptops and small desktops?
+$breackpoint_xl:                  1499px !global;
+$breackpoint_xl_min:              $breackpoint_xl !global;
+
+// Large screen / MG desktop / desktops
+$breackpoint_mg:                  1700px !global;
+$breackpoint_mg_min:              $breackpoint_lg !global;
+
+$breackpoint_xs_max:              ($breackpoint_sm_min - 1) !global;
+$breackpoint_sm_max:              ($breackpoint_md_min - 1) !global;
+$breackpoint_md_max:              ($breackpoint_lg_min - 1) !global;
+$breackpoint_lg_max:              ($breackpoint_xl_min - 1) !global;
+$breackpoint_xl_max:              ($breackpoint_mg_min - 1) !global;
+
+// Container sizes
+
+$content-container_sm: 720px;
+$content-container_md: 940px;
+$content-container_lg: 1140px;
+
+// Small screen / tablet
+$container_sm:                 ($content-container_sm + $gutter);
+
+// Medium screen / desktop
+$container_md:                 ($content-container_md + $gutter);
+
+// Large screen / wide desktop
+$container_lg:                 ($content-container_lg + $gutter);
+
+
+// Elements
+//////////////////////////////////////////////////////
+
+// Roundings
+
+$border-radius_base: 2px;
+$border-radius_large: 4px;
+
+// Buttons
+
+$btn_padding_horizontal_base: 6px;
+$btn_padding_vertical_base: $gutter * 1.5;

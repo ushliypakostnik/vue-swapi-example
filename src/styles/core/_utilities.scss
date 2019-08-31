@@ -1,0 +1,27 @@
+// Utilities
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
+// Rubber Container
+.container-fluid {
+  padding-left: $gutter;
+  padding-right: $gutter;
+
+  @include xs {
+    padding-left: $gutter / 2;
+    padding-right: $gutter / 2;
+  }
+}
+
+// Amimation class example
+.pulse {
+  $fadetransition-duration: $transition-duration * 2;
+  will-change: transform, opacity;
+  @include animation("pulse #{$transition-duration} infinite", "fadeOn #{$fadetransition-duration} forwards");
+}
+
+.pulse-slow {
+  will-change: transform;
+  animation: pulse ($transition-duration * 5) infinite;
+}

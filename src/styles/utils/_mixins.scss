@@ -1,0 +1,139 @@
+// Project mixins
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
+// Media
+//////////////////////////////////////////////////////
+// Breackpoins in styles/utils/_variables.scss
+
+@mixin lg {
+  @media only screen and (min-width: $breackpoint_lg) {
+    @content;
+  }
+}
+
+@mixin not-lg {
+  @media only screen and (max-width: $breackpoint_md_max) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media only screen and (min-width: $breackpoint_sm) and (max-width: $breackpoint_sm_max) {
+    @content;
+  }
+}
+
+@mixin xs {
+  @media only screen and (max-width: $breackpoint_xs_max) {
+    @content;
+  }
+}
+
+@mixin not-xs {
+  @media only screen and (min-width: $breackpoint_sm) {
+    @content;
+  }
+}
+
+@mixin sm-and-xs {
+  @media only screen and (max-width: $breackpoint_sm_max) {
+    @content;
+  }
+}
+
+@mixin min {
+  @media only screen and (max-width: $breackpoint-xs) {
+    @content;
+  }
+}
+
+// Retina 2x
+@mixin retina {
+  @media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
+    only screen and (-moz-min-device-pixel-ratio: 1.5),
+    only screen and (-o-min-device-pixel-ratio: 3/2),
+    only screen and (min-device-pixel-ratio: 1.5) {
+    @content;
+  }
+}
+
+
+// Elements
+//////////////////////////////////////////////////////
+
+// Size )
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin link-style($color, $color-hover) {
+  will-change: color;
+  @include transitions(color);
+
+  &,
+  &:focus {
+    color: $color;
+  }
+
+  &:hover,
+  &:active {
+    color: $color-hover;
+  }
+}
+
+@mixin btn-color($color, $background) {
+  background-color: $background;
+  color: $color;
+  will-change: background;
+  @include transitions(background);
+
+  &:hover,
+  &:active {
+    background-color: darken($background, $fade-percent);
+    color: $color;
+  }
+}
+
+
+// Effects
+//////////////////////////////////////////////////////
+
+// Multi-transition
+// Pass in any number of transitions
+@mixin transitions($transitions...) {
+  $unfoldedTransitions: ();
+
+  @each $transition in $transitions {
+    $unfoldedTransitions: append($unfoldedTransitions, unfoldTransition($transition), comma);
+  }
+
+  transition: $unfoldedTransitions;
+}
+
+@function unfoldTransition($transition) {
+  // Default values
+  $property: all;
+  $duration: $transition_duration;
+  $easing: $transition_timing-function;
+  $delay: $transition_delay;
+  $defaultProperties: ($property, $duration, $easing, $delay);
+
+  // Grab transition properties if they exist
+  $unfoldedTransition: ();
+
+  @for $i from 1 through length($defaultProperties) {
+    $p: null;
+
+    @if $i <= length($transition) {
+      $p: nth($transition, $i);
+    } @else {
+      $p: nth($defaultProperties, $i);
+    }
+    $unfoldedTransition: append($unfoldedTransition, $p);
+  }
+
+  @return $unfoldedTransition;
+}
