@@ -25,6 +25,11 @@
   }
 }
 
+// For inline highlighting
+span.label {
+  color: $color_primary;
+}
+
 // Amimation class example
 .pulse {
   $fadetransition-duration: $transition-duration * 2;

@@ -5,7 +5,10 @@
       <h2>Starships list</h2>
       <ul class="starships__list">
         <li v-for="starship in starships">
-          <Spaceship v-bind:spaceship="starship" />
+          <Ship
+            v-bind:starship="starship"
+            :type="false"
+          />
         </li>
       </ul>
     </div>
@@ -16,7 +19,7 @@
 import { createNamespacedHelpers } from 'vuex';
 
 import Loading from '@/components/Utils/Loading.vue';
-import Spaceship from '@/components/Views/Spaceship.vue';
+import Ship from '@/components/Views/Ship.vue';
 
 const { mapGetters } = createNamespacedHelpers('starships');
 
@@ -25,7 +28,7 @@ export default {
 
   components: {
     Loading,
-    Spaceship,
+    Ship,
   },
 
   beforeCreate() {
@@ -47,5 +50,7 @@ export default {
 
   h2 {
     color: $color_primary;
+    border-bottom: 1px solid $color_dark;
+    @include text($font-family_sans, $font-size_normal, $font-weight_sans_regular);
   }
 </style>

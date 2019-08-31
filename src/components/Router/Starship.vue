@@ -1,12 +1,21 @@
 <template>
-  <div class="starships">
+  <div class="starship">
     <Loading v-if="loading" />
-    <div v-if="success" class="container-fluid">
-      <ul class="starships__list">
-        <li v-for="starship in starships">
-          <Spaceship v-bind:spaceship="starship" />
+    <div v-if="success">
+      <h1>{{ starship['name'] }}</h1>
+      <ul>
+        <li v-for="(value , key) in _starship">
+          <h4>
+            <span class="label">{{ key }}: </span>
+            {{ value }}
+          </h4>
         </li>
       </ul>
+      <router-link
+        class="starship__button"
+        to="/starships"
+        tag="button"
+      >Back to list</router-link>
     </div>
   </div>
 </template>
@@ -15,31 +24,59 @@
 import { createNamespacedHelpers } from 'vuex';
 
 import Loading from '@/components/Utils/Loading.vue';
-import Spaceship from '@/components/Views/Spaceship.vue';
 
-const { mapGetters } = createNamespacedHelpers('starships');
+const { mapGetters } = createNamespacedHelpers('starship');
 
 export default {
-  name: 'Starships',
+  name: 'Starship',
 
   components: {
     Loading,
-    Spaceship,
   },
 
   beforeCreate() {
-    this.$store.dispatch('starships/STARSHIPS_REQUEST');
+    const id = this.$route.params.id;
+    console.log(id);
+    this.$store.dispatch('starship/STARSHIP_REQUEST', id );
   },
 
   computed: {
     ...mapGetters({
       loading: 'loading',
       success: 'success',
-      starships: 'starships',
+      starship: 'starship',
     }),
+
+    _starship() {
+      const _starship = {};
+      for (let key in this.starship) {
+        if (key !== 'name') {
+          const _key = (key[0].toUpperCase() + key.slice(1)).split('_').join(' ');
+          _starship[_key] = this.starship[key];
+        }
+      }
+      return _starship;
+    },
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import "@/styles/_stylebase.scss";
+
+  .starship {
+    h1 {
+      border-bottom: 1px solid $color_dark;
+    }
+
+    h4 {
+      margin: ($gutter / 2) 0;
+      @include text($font-family_sans, round($font-size_small * 1.25), $font-weight_sans_regular);
+    }
+
+    &__button {
+      margin-top: $gutter * 2;
+      margin-bottom: $gutter * 3;
+    }
+  }
 </style>

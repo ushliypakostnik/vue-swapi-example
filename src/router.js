@@ -3,7 +3,6 @@ import Router from 'vue-router';
 
 import Starships from '@/components/Router/Starships';
 import Starship from '@/components/Router/Starship';
-import NotFound from '@/components/Router/NotFound';
 
 Vue.use(Router);
 
@@ -22,14 +21,14 @@ export default new Router({
       component: Starships,
     },
     {
-      path: '/starship',
+      path: '/starship/:id',
       name: 'Starship',
       component: Starship,
     },
     {
       path: '*',
       name: 'NotFound',
-      component: NotFound,
+      component: () => import(/* webpackChunkName: "NotFound" */ '@/components/Router/NotFound'),
     }
   ],
 });

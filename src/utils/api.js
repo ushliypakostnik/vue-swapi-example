@@ -8,4 +8,7 @@ export default ({
 
   getStarships: () =>
     axios.get(`${API_URL}`), // eslint-disable-line implicit-arrow-linebreak
+
+  getStarship: id =>
+    axios.get(`${API_URL}${id}/`), // eslint-disable-line implicit-arrow-linebreak
 });

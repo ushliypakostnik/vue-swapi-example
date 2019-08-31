@@ -1,10 +1,10 @@
 import Vue from 'vue';
 
 import {
-  STARSHIPS_REQUEST,
-  STARSHIPS_SUCCESS,
-  STARSHIPS_ERROR,
-} from '@/store/actions/starships';
+  STARSHIP_REQUEST,
+  STARSHIP_SUCCESS,
+  STARSHIP_ERROR,
+} from '@/store/actions/starship';
 
 import api from '@/utils/api';
 
@@ -17,22 +17,22 @@ const state = {
 const getters = {
   loading: state => state.status === 'loading',
   success: state => state.status === 'success',
-  starships: state => state.starships,
+  starship: state => state.starship,
 };
 /* eslint-enable no-shadow */
 
 const actions = {
-  [STARSHIPS_REQUEST]: ({ commit }) => {
+  [STARSHIP_REQUEST]: ({ commit }, id) => {
     return new Promise((resolve, reject) => {
-      commit(STARSHIPS_REQUEST);
-      api.getStarships()
+      commit(STARSHIP_REQUEST);
+      api.getStarship(id)
         .then((response) => {
-          commit(STARSHIPS_SUCCESS, response);
+          commit(STARSHIP_SUCCESS, response);
           console.log('responce', response);
           resolve(response);
         })
         .catch((error) => {
-          commit(STARSHIPS_ERROR);
+          commit(STARSHIP_ERROR);
           console.log('error', error);
           reject(error);
         });
@@ -42,14 +42,14 @@ const actions = {
 
 /* eslint-disable no-shadow */
 const mutations = {
-  [STARSHIPS_REQUEST]: (state) => {
+  [STARSHIP_REQUEST]: (state) => {
     state.status = 'loading';
   },
-  [STARSHIPS_SUCCESS]: (state, response) => {
+  [STARSHIP_SUCCESS]: (state, response) => {
     state.status = 'success';
-    Vue.set(state, 'starships', response.data.results);
+    Vue.set(state, 'starship', response.data);
   },
-  [STARSHIPS_ERROR]: (state) => {
+  [STARSHIP_ERROR]: (state) => {
     state.status = 'error';
   },
 };

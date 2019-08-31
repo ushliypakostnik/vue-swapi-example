@@ -1,12 +1,17 @@
 <template>
-  <div class="spaceship">
+  <div class="ship">
     <h3>
-      {{ spaceship['name'] }}
+      <router-link
+        :to="path"
+        exact
+      >
+      {{ starship['name'] }}
+      </router-link>
     </h3>
     <ul>
-      <li v-for="(value , key) in _spaceship">
+      <li v-for="(value , key) in _starship">
         <h4>
-          <span class="spaceship__label">{{ key }}: </span>
+          <span class="label">{{ key }}: </span>
           {{ value }}
         </h4>
       </li>
@@ -17,10 +22,10 @@
 <script>
 
 export default {
-  name: 'Spaceship',
+  name: 'Ship',
 
   props: {
-    spaceship: Object,
+    starship: Object,
   },
 
   data: () => ({
@@ -28,16 +33,23 @@ export default {
   }),
 
   computed: {
-    _spaceship() {
-      const _spaceship = {};
-      for (let key in this.spaceship) {
+    _starship() {
+      const _starship = {};
+      for (let key in this.starship) {
         if (key !== 'name') {
           const _key = (key[0].toUpperCase() + key.slice(1)).split('_').join(' ');
-          _spaceship[_key] = this.spaceship[key];
+          _starship[_key] = this.starship[key];
         }
       }
-      return _spaceship;
+      return _starship;
     },
+
+    path() {
+      const arr = this.starship.url.split('/');
+      const id = arr[arr.length - 2];
+      const path = `/starship/${id}`;
+      return path;
+    }
   },
 };
 </script>
@@ -45,7 +57,7 @@ export default {
 <style lang="scss" scoped>
   @import "@/styles/_stylebase.scss";
 
-  .spaceship {
+  .ship {
     margin-bottom: $gutter * 2;
 
     &__label {
