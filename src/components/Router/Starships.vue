@@ -7,7 +7,6 @@
         <li v-for="starship in __starships">
           <Ship
             v-bind:starship="starship"
-            :type="false"
           />
         </li>
       </ul>
