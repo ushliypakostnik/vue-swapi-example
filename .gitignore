@@ -9,6 +9,7 @@ node_modules
 # firebase files
 .firebase
 .firebaserc
+firebase.json
 
 # Log files
 npm-debug.log*
