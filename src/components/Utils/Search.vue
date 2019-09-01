@@ -55,8 +55,11 @@ export default {
 
     setInput() {
       const filter = this.$route.query.search;
-      if (filter !== 'undefined') {
+      if (typeof(filter) !== 'undefined') {
         this.input = this.$route.query.search;
+      }
+      if (filter !== '') {
+        this.search();
       }
     },
   },
