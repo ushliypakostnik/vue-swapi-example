@@ -43,7 +43,7 @@ export default {
       a {
         @include link-color($color_text, $color_text);
 
-        span {
+        span { // stylelint-disable-line selector-max-compound-selectors
           color: $color_primary;
         }
       }

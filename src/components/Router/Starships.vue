@@ -134,7 +134,6 @@ export default {
   @import "@/styles/_stylebase.scss";
 
   .starships {
-
     &__list {
       > li {
         margin-bottom: $gutter * 2;
