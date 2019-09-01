@@ -7,7 +7,7 @@ node_modules
 .env.*.local
 
 # firebase files
-.firebase
+/.firebase
 .firebaserc
 firebase.json
 
