@@ -15,6 +15,7 @@
         class="bottom-button"
         to="/starships"
         tag="button"
+        exact
       >Back to list</router-link>
     </div>
   </div>

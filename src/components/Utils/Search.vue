@@ -1,14 +1,65 @@
 <template>
   <div class="search">
-    <input type="text" placeholder="Starship name" />
-    <button type="button">Search</button>
+    <input
+      v-model="input"
+      type="text"
+      placeholder="Starship name"
+      v-on:keyup.enter="search"
+    />
+    <button
+      type="button"
+      @click.prevent="search"
+    >Search</button>
   </div>
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex';
+
+// eslint-disable-next-line no-unused-vars
+import { STARSHIPS_SEARCH } from '@/store/actions/starships';
+
+const { mapGetters } = createNamespacedHelpers('starships');
 
 export default {
   name: 'Search',
+
+  data: () => ({
+    input: '',
+  }),
+
+  mounted() {
+    this.setInput();
+  },
+
+  computed: {
+    ...mapGetters({
+      query: 'query',
+    }),
+  },
+
+  watch: {
+    '$route' (to, from) {
+      // обрабатываем изменение параметров маршрута...
+      this.setInput();
+    }
+  },
+
+  methods: {
+    search() {
+      if (this.input !== this.query) {
+        this.$store.dispatch('starships/STARSHIPS_SEARCH', this.input);
+        this.$router.push({ path: '/starships', query: { search: this.input } });
+      }
+    },
+
+    setInput() {
+      const filter = this.$route.query.search;
+      if (filter !== 'undefined') {
+        this.input = this.$route.query.search;
+      }
+    },
+  },
 };
 </script>
 

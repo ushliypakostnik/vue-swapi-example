@@ -4,6 +4,7 @@ import {
   STARSHIPS_REQUEST,
   STARSHIPS_SUCCESS,
   STARSHIPS_ERROR,
+  STARSHIPS_SEARCH,
 } from '@/store/actions/starships';
 
 import api from '@/utils/api';
@@ -11,6 +12,7 @@ import api from '@/utils/api';
 const state = {
   status: '',
   starships: {},
+  query: '',
 };
 
 /* eslint-disable no-shadow */
@@ -18,6 +20,7 @@ const getters = {
   loading: state => state.status === 'loading',
   success: state => state.status === 'success',
   starships: state => state.starships,
+  query: state => state.query,
 };
 /* eslint-enable no-shadow */
 
@@ -36,6 +39,9 @@ const actions = {
         });
     });
   },
+  [STARSHIPS_SEARCH]: ({ commit }, query) => {
+    commit(STARSHIPS_SEARCH, query);
+  },
 };
 
 /* eslint-disable no-shadow */
@@ -45,11 +51,14 @@ const mutations = {
   },
   [STARSHIPS_SUCCESS]: (state, response) => {
     state.status = 'success';
-    Vue.set(state, 'starships', response.data.results);
+    state.starships = response.data.results;
   },
   [STARSHIPS_ERROR]: (state) => {
     state.status = 'error';
   },
+  [STARSHIPS_SEARCH]: (state, query) => {
+    state.query = query;
+  }
 };
 /* eslint-enable no-shadow */
 
