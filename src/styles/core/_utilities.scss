@@ -3,6 +3,13 @@
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
+// Amimation class example
+//.pulse {
+//  $fadetransition-duration: $transition-duration * 2;
+//  will-change: transform, opacity;
+//  @include animation("pulse #{$transition-duration} infinite", "fadeOn #{$fadetransition-duration} forwards");
+//}
+
 // Rubber Container
 .container-fluid {
   padding-left: $gutter;
@@ -45,10 +52,3 @@ span.label {
     opacity: 0.5;
   }
 }
-
-// Amimation class example
-//.pulse {
-//  $fadetransition-duration: $transition-duration * 2;
-//  will-change: transform, opacity;
-//  @include animation("pulse #{$transition-duration} infinite", "fadeOn #{$fadetransition-duration} forwards");
-//}
