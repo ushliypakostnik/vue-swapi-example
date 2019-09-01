@@ -45,7 +45,9 @@
       "plugin:vue/essential",
       "@vue/airbnb"
     ],
-    "rules": {},
+    "rules": {
+      "no-underscore-dangle": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     },

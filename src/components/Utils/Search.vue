@@ -39,10 +39,9 @@ export default {
   },
 
   watch: {
-    '$route' (to, from) {
-      // обрабатываем изменение параметров маршрута...
+    '$route'() {
       this.setInput();
-    }
+    },
   },
 
   methods: {
@@ -55,11 +54,13 @@ export default {
 
     setInput() {
       const filter = this.$route.query.search;
-      if (typeof(filter) !== 'undefined') {
-        this.input = this.$route.query.search;
-      }
+      if (typeof (filter) !== 'undefined') {
+        this.input = filter;
+      } else this.input = '';
       if (filter !== '') {
         this.search();
+      } else {
+        this.$router.push({ path: '/starships', query: {} });
       }
     },
   },

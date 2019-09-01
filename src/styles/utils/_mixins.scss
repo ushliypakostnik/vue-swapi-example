@@ -69,7 +69,7 @@
   height: $height;
 }
 
-@mixin link-style($color, $color-hover) {
+@mixin link-color($color, $color-hover) {
   will-change: color;
   @include transitions(color);
 

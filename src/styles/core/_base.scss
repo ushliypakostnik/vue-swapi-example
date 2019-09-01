@@ -69,7 +69,7 @@ a {
 // Links
 a {
   text-decoration: none;
-  @include link-style($color_link, $color_link-hover);
+  @include link-color($color_link, $color_link-hover);
 }
 
 

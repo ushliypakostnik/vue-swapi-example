@@ -4,7 +4,10 @@
     <div v-if="success">
       <h2>Starships list</h2>
       <ul class="starships__list">
-        <li v-for="starship in __starships">
+        <li
+          v-for="starship in __starships"
+          v-bind:key="starship.url"
+        >
           <Ship
             v-bind:starship="starship"
           />
@@ -85,7 +88,8 @@ export default {
     },
 
     _starships() {
-      const _starships = this.starships.filter(starship => {
+      // eslint-disable-next-line arrow-body-style
+      const _starships = this.starships.filter((starship) => {
         return starship.name.toLowerCase().includes(this.query.toLowerCase());
       });
       return _starships;
@@ -101,7 +105,7 @@ export default {
     reset() {
       this.minValue = 0;
       this.maxValue = UTILS.pageSize;
-    }
+    },
   },
 
   methods: {

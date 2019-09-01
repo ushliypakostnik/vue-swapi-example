@@ -1,7 +1,12 @@
 <template>
   <header class="header" role="banner">
     <div class="container-fluid">
-      <h1><span>SWAPI</span> Test Example</h1>
+      <h1><router-link
+        to="/starships"
+        exact
+      >
+      <span>SWAPI</span> Test Example
+      </router-link></h1>
       <Search />
     </div>
   </header>
@@ -35,8 +40,12 @@ export default {
       display: inline-block;
       margin-bottom: 0;
 
-      span {
-        color: $color_primary;
+      a {
+        @include link-color($color_text, $color_text);
+
+        span {
+          color: $color_primary;
+        }
       }
     }
 
